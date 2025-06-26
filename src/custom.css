@@ -1,0 +1,707 @@
+/* ────────────────────────────── */
+/* 🔹 Глобальні стилі та базова структура */
+/* ────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: auto; /* дозволяє scroll для flex блоків */
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(500deg, #05162d, #05172e, #082648, #0e3957);
+  scroll-behavior: smooth;
+}
+
+main {
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Italiana', serif;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  margin: 0;
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Основна сітка сторінки */
+/* ────────────────────────────── */
+
+.mainblock {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 80px; /* компенсує фіксований хедер */
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Хедер і навігація */
+/* ────────────────────────────── */
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 40px;
+  background: rgba(10, 10, 20, 0.65);
+  font-family: 'Victor Mono', monospace;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  font-family: 'Italiana', serif;
+  font-size: 1.7rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* ☰ Бургер-кнопка (відображається лише на мобілках) */
+.burger {
+  display: none;
+  font-size: 1.4rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Стандартна навігація */
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Банер-секція */
+/* ────────────────────────────── */
+
+.banner {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  border-radius: 1.1rem;
+  background-image: url('/images/banner.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Потемнення банера */
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 0;
+}
+
+/* Контейнер в центрі банера */
+.banner-container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px;
+  width: 90%;
+  max-width: 700px;
+  color: #fff;
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Кнопка на банері */
+/* ────────────────────────────── */
+
+.DownloadButton {
+  width: 120px;
+  height: 35px;
+  display: inline-flex;
+  align-items: center;       /* вертикальне центрування */
+  justify-content: center;   /* горизонтальне центрування */
+  padding: 12px 28px;
+  margin-top: 24px;
+  background-color: #52303f;
+  color: white;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.DownloadButton:hover {
+  background-color: #0d3653;
+  //transform: scale(1.03);
+  color: white; /* залишається білим при ховері */
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Футер (із фоном!) */
+/* ────────────────────────────── */
+
+.site-footer {
+  position: relative;
+  width: 100vw;
+  color: #eee;
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Фонове зображення футера */
+.footer-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/fotter-bg.jpg'); /* заміни на свій файл */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.65;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(5px) contrast(2);
+}
+
+/* Контент поверх фону */
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+
+.site-footer,
+.footer-background {
+  border-radius: 1.1rem; /* або 20px — головне, щоб однаково */
+}
+
+.footer-title {
+  font-size: 2rem;
+  font-family: 'Italiana', serif;
+  margin-bottom: 0.3em;
+}
+
+.footer-subtitle {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 1.5em;
+}
+
+.footer-note {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 2em;
+  line-height: 1.5;
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Соціальні іконки у футері */
+/* ────────────────────────────── */
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #bbb;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.social-link:hover {
+  color: #fff;
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Glow-заголовок (світіння) */
+/* ────────────────────────────── */
+
+.glow-title {
+  color: #fff;
+  position: relative;
+  font-family: 'Italiana', serif;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.glow-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  opacity: 0.15;
+  filter: blur(6px);
+  animation: glow-fade 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow-fade {
+  0%, 100% {
+    opacity: 0.15;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Адаптація для мобілок */
+/* ────────────────────────────── */
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+    z-index: 1001;
+  }
+
+  .main-header {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 20, 0.95);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 14px;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem;
+    padding-left: 4px;
+  }
+}
+/* ────────────────────────────── */
+/* 🔹 Футер посилання та іконки */
+/* ────────────────────────────── */
+.fotter-icons {
+  width: 28px;
+  height: 28px;
+  filter: brightness(1000%) drop-shadow(0 0 2px #ffffffaa);
+  opacity: 0.75;
+  transition: transform 0.3s ease;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ccc;
+  text-decoration: none;
+  font-family: 'Cinzel', serif; /* або інший декоративний */
+  font-size: 1rem;
+  margin: 6px 14px;
+  transition: color 0.3s ease;
+}
+
+.social-link span {
+  opacity: 0.7;
+  transition: opacity 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-link:hover {
+  color: #fff;
+}
+
+.social-link:hover .fotter-icons {
+  transform: scale(1.12);
+  opacity: 1;
+}
+
+.social-link:hover span {
+  opacity: 1;
+  text-shadow: 0 0 6px #ff8144;
+}
+/* ────────────────────────────── */
+/* 🔹 Блоки в секції Features */
+/* ────────────────────────────── */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Змінюй на 6 якщо поміщається */
+  gap: 20px;
+  padding: 30px 20px 30px;
+  justify-items: center;
+}
+
+.block-design {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block-design::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./images/block-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px) brightness(0.35); /* затемнення фону */
+  z-index: 0;
+}
+
+.block-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.block-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  
+}
+
+.block-description {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    flex-direction: column;
+    overflow-x: unset;
+    scroll-snap-type: none;
+  }
+
+  .block-design {
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+  }
+}
+
+
+/* ────────────────────────────── */
+/* 🔹 Розділення сторінок */
+/* ────────────────────────────── */
+
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+  margin: 100px 0;
+}
+
+/* ───────────────────────────────────── */
+/* 🔹 Чи має текст душу — частина геймплею */
+/* ───────────────────────────────────── */
+
+.soul-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+
+  font-size: 1.1rem;
+  line-height: 1.9;
+  text-align: center;
+  font-family:'Comic Relief', cursive, sans-serif;;
+
+  color: #e6e6f0;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  position: relative;
+}
+
+.soul-block {
+  position: relative;
+  background: url('./images/soul-block-bg.png') center/cover no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+
+  padding: 4rem 2rem;
+  margin: 3rem auto;
+  max-width: 1000px;
+
+  box-shadow:
+    inset 0 0 60px rgba(0, 0, 0, 1),
+    0 0 40px rgba(255, 100, 150, 0.4);
+
+  animation: soulFadeIn 1.2s ease-in-out both;
+}
+
+/* Блюрований затемнюючий шар */
+.soul-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), rgba(30, 15, 40, 0.5));
+  filter: brightness(60%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+/* Анімація плавної появи */
+@keyframes soulFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ──────────────────────────────── */
+/* 🔹 Чи має Штучний інтелект душу. */
+/* ──────────────────────────────── */
+
+.ai-soul {
+  position: relative;
+  padding: 100px 20px;
+  background-image: url(./images/ai-soul-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #eee;
+  text-align: center;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 80px rgba(255, 255, 255, 0.02),
+    0 0 60px rgba(255, 150, 255, 0.05);
+}
+
+.ai-soul::before {
+  content: "";
+  backdrop-filter: blur(30px) brightness(55%);
+  position: absolute;
+  inset: 0;
+  z-index:0;
+}
+
+.ai-soul-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.ai-soul-content p   {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #ccc;
+}
+
+.ai-poem{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Caveat', serif;
+  opacity: 0.6;
+}
+
+.ai-poem-name{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Caveat', serif;
+  opacity: 0.6;
+}
+
+.ai-text {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Caveat', cursive;
+  margin-bottom: 1rem;    
+  opacity: 0.6;
+}
+
+/* ─────────────── */
+/* 🔹 Ком'юніті */
+/* ─────────────── */
+
+.community-con {
+  position: relative;
+  padding: 4rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  color: #f0f0f0;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ⬇️ Псевдоелемент із фоном і brightness-затемненням */
+.community-con::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(./images/community-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(0.6rem) brightness(27%);
+  z-index: 0;
+}
+
+/* ⬆️ Текст залишається ясним і не затемнюється */
+.community-con > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+.community-text {
+  font-family: 'Gaegu', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #e0e0ff;
+}
+
+.main-community-text {
+  font-size: 0.93rem;
+  font-family: 'Gaegu', sans-serif;
+  line-height: 1.5rem;
+  color: #d4d4f0;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ────────────── */
+/* 🔹 Таймлайн */
+/* ────────────── */
+
+.time-con {
+  border-radius: 15px;
+  background-image: url(./images/time-bg.jpg);
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 2rem;
+  backdrop-filter: blur(2rem);
+  z-index: 0;
+}
+
+.main-time-text{
+  font-family: 'Cinzel', serif; 
+}
+
+.time-text { 
+  font-family: 'Cinzel', serif; 
+  font-size: 2.5rem; 
+  letter-spacing: 2px; 
+  margin-bottom: 2rem; 
+  color: #e6e1ff; 
+  text-shadow: 0 0 10px rgba(200, 180, 255, 0.4); 
+  text-transform: uppercase; }
+
+.time-con {
+  position: relative;
+  border-radius: 15px;
+  background-image: none; /* фон переносимо в ::before */
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  padding: 2rem;
+  backdrop-filter: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ⬇️ Псевдоелемент для фону */
+.time-con::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(./images/time-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(50%) blur(20px);
+  z-index: 0;
+}
+
+/* ⬆️ Усе вмістове зверху */
+.time-con > * {
+  position: relative;
+  z-index: 1;
+}
