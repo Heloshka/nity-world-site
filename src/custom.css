@@ -400,7 +400,7 @@ h1 {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('./images/block-bg.png');
+  background-image: url('/images/block-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -533,7 +533,7 @@ h1 {
 .ai-soul {
   position: relative;
   padding: 100px 20px;
-  background-image: url(./images/ai-soul-bg.jpg);
+  background-image: url(/images/ai-soul-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -612,7 +612,7 @@ h1 {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url(./images/community-bg.png);
+  background-image: url(/images/community-bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -653,7 +653,7 @@ h1 {
 
 .time-con {
   border-radius: 15px;
-  background-image: url(./images/time-bg.jpg);
+  background-image: url(/images/time-bg.jpg);
   max-width: 900px;
   margin: auto;
   text-align: center;
@@ -693,7 +693,7 @@ h1 {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url(./images/time-bg.jpg);
+  background-image: url(/images/time-bg.jpg);
   background-size: cover;
   background-position: center;
   filter: brightness(50%) blur(20px);
